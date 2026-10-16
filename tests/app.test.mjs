@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync,existsSync} from 'node:fs';
+test('app has storage, dashboard, canvas, publishing and backup flows',()=>{const code=readFileSync('www/app.js','utf8');for(const term of ['indexedDB.open','function overview','function detail','function publishing','canvasFields','NEXORA-backup','data.publications'])assert.ok(code.includes(term),term)});
+test('native workflow and UI bundle exist',()=>{for(const f of ['.github/workflows/android-apk.yml','www/index.html','www/style.css','www/manifest.webmanifest','capacitor.config.json'])assert.ok(existsSync(f),f)});
